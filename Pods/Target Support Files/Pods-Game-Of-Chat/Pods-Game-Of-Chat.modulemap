@@ -1,0 +1,6 @@
+framework module Pods_Game_Of_Chat {
+  umbrella header "Pods-Game-Of-Chat-umbrella.h"
+
+  export *
+  module * { export * }
+}
