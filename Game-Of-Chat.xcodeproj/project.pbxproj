@@ -10,6 +10,7 @@
 		5EDB59A96953771B26BC0B5F /* Pods_Game_Of_Chat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 162888B3E56F8475FC93F3A9 /* Pods_Game_Of_Chat.framework */; };
 		9421B3221DD5BEB500E285E2 /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9421B3211DD5BEB500E285E2 /* UserCell.swift */; };
 		9421B3241DD7633000E285E2 /* ChatMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9421B3231DD7633000E285E2 /* ChatMessageCell.swift */; };
+		9421B3261DD9BEA200E285E2 /* ChatInputContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9421B3251DD9BEA200E285E2 /* ChatInputContainerView.swift */; };
 		945D7AF71DD3C0B600F2C291 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 945D7AF61DD3C0B600F2C291 /* AppDelegate.swift */; };
 		945D7AF91DD3C0B600F2C291 /* MessagesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 945D7AF81DD3C0B600F2C291 /* MessagesController.swift */; };
 		945D7AFC1DD3C0B600F2C291 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 945D7AFA1DD3C0B600F2C291 /* Main.storyboard */; };
@@ -55,6 +56,8 @@
 		8EAB41E5F60A9B49C4B12A2D /* Pods-Game-Of-Chat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Game-Of-Chat.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Game-Of-Chat/Pods-Game-Of-Chat.debug.xcconfig"; sourceTree = "<group>"; };
 		9421B3211DD5BEB500E285E2 /* UserCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
 		9421B3231DD7633000E285E2 /* ChatMessageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatMessageCell.swift; sourceTree = "<group>"; };
+		9421B3251DD9BEA200E285E2 /* ChatInputContainerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatInputContainerView.swift; sourceTree = "<group>"; };
+		9421B3271DD9D46200E285E2 /* Game-Of-Chat.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Game-Of-Chat.entitlements"; sourceTree = "<group>"; };
 		945D7AF31DD3C0B600F2C291 /* Game-Of-Chat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Game-Of-Chat.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		945D7AF61DD3C0B600F2C291 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		945D7AF81DD3C0B600F2C291 /* MessagesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesController.swift; sourceTree = "<group>"; };
@@ -137,6 +140,7 @@
 			children = (
 				9421B3211DD5BEB500E285E2 /* UserCell.swift */,
 				9421B3231DD7633000E285E2 /* ChatMessageCell.swift */,
+				9421B3251DD9BEA200E285E2 /* ChatInputContainerView.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -166,6 +170,7 @@
 		945D7AF51DD3C0B600F2C291 /* Game-Of-Chat */ = {
 			isa = PBXGroup;
 			children = (
+				9421B3271DD9D46200E285E2 /* Game-Of-Chat.entitlements */,
 				9421B3201DD5BE1100E285E2 /* View */,
 				945D7B2F1DD50CEC00F2C291 /* Helpers */,
 				945D7B2A1DD4D65A00F2C291 /* Model */,
@@ -297,6 +302,11 @@
 						CreatedOnToolsVersion = 8.1;
 						DevelopmentTeam = G5NKVP88SZ;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+						};
 					};
 					945D7B061DD3C0B600F2C291 = {
 						CreatedOnToolsVersion = 8.1;
@@ -489,6 +499,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				945D7B331DD526F500F2C291 /* ChatLogController.swift in Sources */,
+				9421B3261DD9BEA200E285E2 /* ChatInputContainerView.swift in Sources */,
 				945D7B291DD4CF0C00F2C291 /* NewMessageController.swift in Sources */,
 				945D7AF91DD3C0B600F2C291 /* MessagesController.swift in Sources */,
 				945D7B351DD5436D00F2C291 /* Message.swift in Sources */,
@@ -649,6 +660,7 @@
 			baseConfigurationReference = 8EAB41E5F60A9B49C4B12A2D /* Pods-Game-Of-Chat.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Game-Of-Chat/Game-Of-Chat.entitlements";
 				DEVELOPMENT_TEAM = G5NKVP88SZ;
 				INFOPLIST_FILE = "Game-Of-Chat/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -663,6 +675,7 @@
 			baseConfigurationReference = 34B3213B8CB23ACB6EEC18B5 /* Pods-Game-Of-Chat.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Game-Of-Chat/Game-Of-Chat.entitlements";
 				DEVELOPMENT_TEAM = G5NKVP88SZ;
 				INFOPLIST_FILE = "Game-Of-Chat/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

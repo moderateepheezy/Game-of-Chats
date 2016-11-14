@@ -21,10 +21,11 @@ class MessagesController: UITableViewController {
         let image = UIImage(named: "new_message_icon")
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: image, style: .plain, target: self, action: #selector(handleNewMessage))
         
+        checkIfUserIsLogin()
+        
         tableView.register(UserCell.self, forCellReuseIdentifier: cellId)
         
-       checkIfUserIsLogin()
-        
+        tableView.allowsMultipleSelectionDuringEditing = true
     }
     
     var messages = [Message]()
@@ -47,6 +48,13 @@ class MessagesController: UITableViewController {
                 self.fetchMessageWith(messageId: messageId)
                 
             }, withCancel: nil)
+            
+        }, withCancel: nil)
+        
+        ref.observe(.childRemoved, with: {(snapshot) in
+            
+            self.messageDictionary.removeValue(forKey: snapshot.key)
+            self.attemptReloadOfTable()
             
         }, withCancel: nil)
     }
@@ -157,6 +165,34 @@ class MessagesController: UITableViewController {
                 self.showChatControllerFor(user: user)
                 
             }, withCancel: nil)
+        
+    }
+    
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        
+        let message = self.messages[indexPath.row]
+        
+        guard let uid = FIRAuth.auth()?.currentUser?.uid, let chatPartnerId = message.checkPartnerId() else {
+            return
+        }
+        
+        FIRDatabase.database().reference().child("user-messages").child(uid).child(chatPartnerId).removeValue { (error, ref) in
+            
+            if error != nil{
+                print("Failed to delete message \(error)")
+                return
+            }
+            
+            self.messageDictionary.removeValue(forKey: chatPartnerId)
+            self.attemptReloadOfTable()
+            
+            //self.messages.remove(at: indexPath.row)
+            //self.tableView.deleteRows(at: [indexPath], with: .automatic )
+        }
         
     }
     

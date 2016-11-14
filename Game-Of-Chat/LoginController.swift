@@ -82,7 +82,7 @@ class LoginController: UIViewController {
     lazy var loginRegisterSegmentedControl: UISegmentedControl = {
        let sc = UISegmentedControl(items: ["Login", "Register"])
         sc.translatesAutoresizingMaskIntoConstraints = false
-        sc.selectedSegmentIndex = 1
+        sc.selectedSegmentIndex = 0
         sc.tintColor = .white
         sc.addTarget(self, action: #selector(handleLoginRegisterChange), for: .valueChanged)
        return sc

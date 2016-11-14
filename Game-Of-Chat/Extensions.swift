@@ -8,7 +8,7 @@
 
 import UIKit
 
-let imageCache = NSCache<AnyObject, AnyObject>()
+let imageCache = NSCache<NSString, UIImage>()
 
 extension UIImageView{
     
@@ -16,7 +16,7 @@ extension UIImageView{
         
         self.image = nil
         
-        if let cacheImage = imageCache.object(forKey: urlString as AnyObject) as? UIImage{
+        if let cacheImage = imageCache.object(forKey: urlString as NSString){
             self.image = cacheImage
         }else{
             let url = NSURL(string: urlString)
@@ -30,7 +30,7 @@ extension UIImageView{
                 DispatchQueue.main.async {
                     
                     if let imageDownload =  UIImage(data: data!){
-                        imageCache.setObject(imageDownload, forKey: urlString as AnyObject)
+                        imageCache.setObject(imageDownload, forKey: urlString as NSString)
                         self.image = imageDownload
                     }
                 }

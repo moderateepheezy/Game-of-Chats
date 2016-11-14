@@ -15,6 +15,10 @@ class Message: NSObject {
     var text: String?
     var timestamp: NSNumber?
     var toId: String?
+    var imageUrl: String?
+    var imageWidth: NSNumber?
+    var imageHeight: NSNumber?
+    var videoUrl: String?
     
     func checkPartnerId() -> String?{
         
